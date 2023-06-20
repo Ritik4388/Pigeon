@@ -1,0 +1,27 @@
+import { createTheme } from "@mui/material";
+import { useEffect, useState } from "react";
+
+const theme = createTheme({
+  components: {
+    MuiCard: {
+      defaultProps: {
+        variant: "outlined",
+      },
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          ...{
+            padding: theme.spacing(2),
+            borderWidth: "1.5px",
+          },
+        }),
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: "xl",
+      },
+    },
+  },
+});
+
+export default theme;
