@@ -19,9 +19,10 @@ const io = require("socket.io")(httpServer, {
   cors: {
     origin: [
       "http://localhost:3000",
-      "https://pigeonx.netlify.app/",
-      "https://pigeon-backend-dbid.onrender.com/",
+      "https://pigeonx.netlify.app",
+      "https://pigeon-backend-dbid.onrender.com",
     ],
+    methods: ["GET", "POST"],
   },
 });
 
