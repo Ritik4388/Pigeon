@@ -15,6 +15,10 @@ import { login } from "../../api/users";
 import ErrorAlert from "../ErrorAlert";
 import { loginUser } from "../../helpers/authHelper";
 import Copyright from "../Copyright";
+import theme from "../../theme";
+import HorizontalStack from "../util/HorizontalStack";
+import { useWindowWidth } from "../../helpers/widthHook";
+import pigeonLogo from "../../assests/favicon-4.png";
 
 const LoginView = () => {
   const navigate = useNavigate();
@@ -42,13 +46,30 @@ const LoginView = () => {
     }
   };
 
+  const width = useWindowWidth();
+  const mdScrn = width < 900;
+
   return (
     <Container maxWidth={"xs"} sx={{ mt: 6 }}>
       <Stack alignItems="center">
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" underline="none">
-          Pigeon
-          </Link>
+        <Typography
+          variant={mdScrn ? "h3" : "h2"}
+          color={theme.palette.secondary.main}
+          sx={{ mb: mdScrn ? 2 : 3 }}
+        >
+          <HorizontalStack>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                underline: "none",
+              }}
+            >
+              Pigeon
+            </Link>
+            <img src={pigeonLogo} alt="Pigeon" />
+          </HorizontalStack>
         </Typography>
         <Typography variant="h5" gutterBottom>
           Login

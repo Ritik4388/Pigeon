@@ -30,6 +30,7 @@ import { RiContrast2Line } from "react-icons/ri";
 import IconName from "./util/IconName";
 import { MdLogin, MdLogout, MdManageAccounts } from "react-icons/md";
 import { useWindowWidth } from "../helpers/widthHook";
+import pigeonLogo from "../assests/favicon-4.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Navbar = () => {
   const handleSearchIcon = (e) => {
     setSearchIcon(!searchIcon);
   };
+
   //////////////////////////////////////////////////
   return (
     <Stack mb={2}>
@@ -75,15 +77,20 @@ const Navbar = () => {
         spacing={!mdScrn ? 2 : 0}
       >
         <HorizontalStack onClick={() => navigate("/")}>
-          <GiWorld size={33} color={theme.palette.secondary.main} />
+          {/* <GiWorld size={33} color={theme.palette.secondary.main} /> */}
+          <img
+            src={pigeonLogo}
+            alt="Pigeon"
+            color={theme.palette.secondary.main}
+          />
           <Typography
             sx={{ display: mobile ? "none" : "block" }}
             variant={navbarWidth ? "h6" : "h4"}
             mr={1}
-            color={theme.palette.primary.main}
+            color={theme.palette.secondary.main}
           >
             {/* <Link to="/" > */}
-            SocialX
+            Pigeon
             {/* </Link> */}
           </Typography>
         </HorizontalStack>
@@ -153,6 +160,7 @@ const Navbar = () => {
                   textDecoration: "none",
                   color: "inherit",
                   marginLeft: !mdScrn ? "35px" : "0px",
+                  cursor: "pointer",
                 }}
                 onClick={handleLogout}
               >

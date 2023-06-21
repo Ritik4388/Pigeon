@@ -55,7 +55,7 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
             {comment ? <>Reply</> : <>Comment</>}
           </Typography>
           <Typography>
-            <a href="https://commonmark.org/help/" target="_blank">
+          <a href="https://commonmark.org/help/" target="_blank" rel="noreferrer">
               Markdown Help
             </a>
           </Typography>

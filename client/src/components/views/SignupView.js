@@ -1,20 +1,16 @@
-import {
-  Button,
-  Container,
-  Stack,
-  TextField,
-  Typography,
-  Link,
-  Alert,
-} from "@mui/material";
+import { Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { signup } from "../../api/users";
 import { loginUser } from "../../helpers/authHelper";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Copyright from "../Copyright";
 import ErrorAlert from "../ErrorAlert";
 import { isLength, isEmail, contains } from "validator";
+import theme from "../../theme";
+import pigeonLogo from "../../assests/favicon-4.png";
+import HorizontalStack from "../util/HorizontalStack";
+import { useWindowWidth } from "../../helpers/widthHook";
 
 const SignupView = () => {
   const navigate = useNavigate();
@@ -71,19 +67,39 @@ const SignupView = () => {
     return errors;
   };
 
+  const width = useWindowWidth();
+  const mdScrn = width < 900;
+
   return (
     <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 } }}>
       <Stack alignItems="center">
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" underline="none">
-          Pigeon
-          </Link>
+        <Typography
+          variant={mdScrn ? "h3" : "h2"}
+          color={theme.palette.secondary.main}
+          sx={{ mb: mdScrn ? 2 : 3 }}
+        >
+          <HorizontalStack>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                underline: "none",
+              }}
+            >
+              Pigeon
+            </Link>
+            <img src={pigeonLogo} alt="Pigeon" />
+          </HorizontalStack>
         </Typography>
         <Typography variant="h5" gutterBottom>
           Sign Up
         </Typography>
         <Typography color="text.secondary">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account?{" "}
+          <Box component={Link} to="/login">
+            Login
+          </Box>
         </Typography>
         <Box component="form" onSubmit={handleSubmit}>
           <TextField

@@ -16,6 +16,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
+import PrivateRoute from "./PrivateRoute";
 
 const Profile = (props) => {
   const [user, setUser] = useState(null);
@@ -73,6 +74,12 @@ const Profile = (props) => {
             <Button variant="outlined" onClick={props.handleMessage}>
               Message
             </Button>
+          )}
+
+          {!currentUser && (
+              <Button variant="outlined" onClick={props.handleMessage}>
+                Message
+              </Button>
           )}
 
           <HorizontalStack>
