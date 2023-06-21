@@ -7,6 +7,7 @@ const signup = async (user) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(user),
     });
@@ -23,6 +24,7 @@ const login = async (user) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(user),
     });
@@ -34,7 +36,11 @@ const login = async (user) => {
 
 const getUser = async (params) => {
   try {
-    const res = await fetch(BASE_URL + "api/users/" + params.id);
+    const res = await fetch(BASE_URL + "api/users/" + params.id, {
+      headers: {
+        "Access-Control-Allow-Origin": BASE_URL,
+      },
+    });
     return res.json();
   } catch (err) {
     console.log(err);
@@ -44,7 +50,12 @@ const getUser = async (params) => {
 const getRandomUsers = async (query) => {
   try {
     const res = await fetch(
-      BASE_URL + "api/users/random?" + new URLSearchParams(query)
+      BASE_URL + "api/users/random?" + new URLSearchParams(query),
+      {
+        headers: {
+          "Access-Control-Allow-Origin": BASE_URL,
+        },
+      }
     );
     return res.json();
   } catch (err) {
@@ -60,6 +71,7 @@ const updateUser = async (user, data) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(data),
     });

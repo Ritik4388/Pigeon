@@ -11,6 +11,7 @@ const getUserLikedPosts = async (likerId, token, query) => {
       {
         headers: {
           "x-access-token": token,
+          "Access-Control-Allow-Origin": BASE_URL,
         },
       }
     );
@@ -27,6 +28,7 @@ const getPosts = async (token, query) => {
       {
         headers: {
           "x-access-token": token,
+          "Access-Control-Allow-Origin": BASE_URL,
         },
       }
     );
@@ -41,6 +43,7 @@ const getPost = async (postId, token) => {
     const res = await fetch(BASE_URL + "api/posts/" + postId, {
       headers: {
         "x-access-token": token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return await res.json();
@@ -56,9 +59,16 @@ const getUserLikes = async (postId, anchor) => {
         "api/posts/like/" +
         postId +
         "/users?" +
-        new URLSearchParams({
-          anchor,
-        })
+        new URLSearchParams(
+          {
+            anchor,
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": BASE_URL,
+            },
+          }
+        )
     );
 
     return await res.json();
@@ -75,6 +85,7 @@ const createPost = async (post, user) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(post),
     });
@@ -92,6 +103,7 @@ const updatePost = async (postId, user, data) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(data),
     });
@@ -107,6 +119,7 @@ const deletePost = async (postId, user) => {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return res.json();
@@ -118,7 +131,11 @@ const deletePost = async (postId, user) => {
 const getComments = async (params) => {
   try {
     const { id } = params;
-    const res = await fetch(BASE_URL + "api/comments/post/" + id);
+    const res = await fetch(BASE_URL + "api/comments/post/" + id, {
+      headers: {
+        "Access-Control-Allow-Origin": BASE_URL,
+      },
+    });
     return res.json();
   } catch (err) {
     console.log(err);
@@ -129,7 +146,12 @@ const getUserComments = async (params) => {
   try {
     const { id, query } = params;
     const res = await fetch(
-      BASE_URL + "api/comments/user/" + id + "?" + new URLSearchParams(query)
+      BASE_URL + "api/comments/user/" + id + "?" + new URLSearchParams(query),
+      {
+        headers: {
+          "Access-Control-Allow-Origin": BASE_URL,
+        },
+      }
     );
     return res.json();
   } catch (err) {
@@ -146,6 +168,7 @@ const createComment = async (comment, params, user) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(comment),
     });
@@ -163,6 +186,7 @@ const updateComment = async (commentId, user, data) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(data),
     });
@@ -178,6 +202,7 @@ const deleteComment = async (commentId, user) => {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return res.json();
@@ -192,6 +217,7 @@ const likePost = async (postId, user) => {
       method: "POST",
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return res.json();
@@ -206,6 +232,7 @@ const unlikePost = async (postId, user) => {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return res.json();

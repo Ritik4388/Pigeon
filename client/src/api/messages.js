@@ -5,6 +5,7 @@ const getConversations = async (user) => {
     const res = await fetch(BASE_URL + "api/messages", {
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return await res.json();
@@ -18,6 +19,7 @@ const getMessages = async (user, conversationId) => {
     const res = await fetch(BASE_URL + "api/messages/" + conversationId, {
       headers: {
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
     });
     return await res.json();
@@ -34,6 +36,7 @@ const sendMessage = async (user, message, recipientId) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
+        "Access-Control-Allow-Origin": BASE_URL,
       },
       body: JSON.stringify(message),
     });
