@@ -11,7 +11,7 @@ USER_LIKES_PAGE_SIZE = 9;
 const createPost = async (req, res) => {
   try {
     const { title, content, userId } = req.body;
-
+    // console.log(req.body)
     if (!(title && content)) {
       throw new Error("All input required");
     }
@@ -96,9 +96,10 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   try {
+    // console.log("postId");
     const postId = req.params.id;
     const { userId, isAdmin } = req.body;
-
+    // console.log("body", req.body);
     const post = await Post.findById(postId);
 
     if (!post) {
@@ -110,7 +111,7 @@ const deletePost = async (req, res) => {
     }
 
     await post.remove();
-
+    // console.log("removed", post);
     await Comment.deleteMany({ post: post._id });
 
     return res.json(post);

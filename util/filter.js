@@ -1,5 +1,5 @@
 const Filter = require("bad-words");
 
-const filter = new Filter({ placeHolder: "X" });
+const filter = new Filter({ placeHolder: "*" });
 
 module.exports = filter;

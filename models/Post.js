@@ -48,7 +48,7 @@ PostSchema.pre("save", function (next) {
 });
 
 PostSchema.pre("remove", async function (next) {
-  console.log(this._id);
+  console.log("post removed with id", this._id);
   await PostLike.deleteMany({ postId: this._id });
   next();
 });

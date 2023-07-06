@@ -1,11 +1,4 @@
-import {
-  Button,
-  Card,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Card, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { AiFillCheckCircle, AiFillEdit, AiFillMessage } from "react-icons/ai";
@@ -25,7 +18,6 @@ import Markdown from "./Markdown";
 import "./postCard.css";
 import { MdCancel } from "react-icons/md";
 import { BiTrash } from "react-icons/bi";
-import { BsReplyFill } from "react-icons/bs";
 import UserLikePreview from "./UserLikePreview";
 
 const PostCard = (props) => {
@@ -57,6 +49,7 @@ const PostCard = (props) => {
     } else {
       setLoading(true);
       await deletePost(post._id, isLoggedIn());
+      // console.log("from PostCard line 52", dt);
       setLoading(false);
       if (preview) {
         removePost(post);

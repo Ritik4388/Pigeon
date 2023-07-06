@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import CommentEditor from "./CommentEditor";
 
 const Comments = () => {
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
   const [rerender, setRerender] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,6 +16,7 @@ const Comments = () => {
 
   const fetchComments = async () => {
     const data = await getComments(params);
+    // console.log("data", data);
     if (data.error) {
       setError("Failed to fetch comments");
     } else {
@@ -53,7 +54,7 @@ const Comments = () => {
   const removeComment = (removedComment) => {
     if (removedComment.parent) {
       const parentComment = findComment(removedComment.parent);
-      parentComment.children = parentComment.children.filter(
+      parentComment.children = parentComment?.children.filter(
         (comment) => comment._id !== removedComment._id
       );
       setRerender(!rerender);
@@ -84,7 +85,7 @@ const Comments = () => {
 
   const addComment = (comment) => {
     if (comment.parent) {
-      console.log(comment.parent);
+      // console.log(comment.parent);
       const parentComment = findComment(comment.parent);
       parentComment.children = [comment, ...parentComment.children];
 

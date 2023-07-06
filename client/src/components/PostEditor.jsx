@@ -1,7 +1,6 @@
 import {
   Button,
   Card,
-  Link,
   Stack,
   TextField,
   Typography,
@@ -36,7 +35,6 @@ const PostEditor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
     const data = await createPost(formData, isLoggedIn());
     setLoading(false);

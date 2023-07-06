@@ -4,11 +4,9 @@ import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import PostBrowser from "../PostBrowser";
 import { useWindowWidth } from "../../helpers/widthHook";
-import GoBack from "../GoBack";
 
 const ExploreView = () => {
   const width = useWindowWidth();
-  const mobile = width < 500;
   const mdScrn = width < 900;
   return (
     <>

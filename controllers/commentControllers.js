@@ -48,7 +48,6 @@ const createComment = async (req, res) => {
 const getPostComments = async (req, res) => {
   try {
     const postId = req.params.id;
-
     const comments = await Comment.find({ post: postId })
       .populate("commenter", "-password")
       .sort("-createdAt");
@@ -63,14 +62,18 @@ const getPostComments = async (req, res) => {
 
     for (let i = 0; i < comments.length; i++) {
       const comment = comments[i];
-      if (comment.parent) {
+      
+      if (commentParents[comment.parent]) {
+        // console.log(i, commentParents[comment.parent]);
         let commentParent = commentParents[comment.parent];
         commentParent.children = [...commentParent.children, comment];
+        // console.log(commentParent.children);
       } else {
         rootComments = [...rootComments, comment];
+        // console.log(rootComments);
       }
     }
-
+    // console.log("hey", rootComments);
     return res.json(rootComments);
   } catch (err) {
     return res.status(400).json(err.message);

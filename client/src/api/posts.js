@@ -120,11 +120,14 @@ const deletePost = async (postId, user) => {
       headers: {
         "x-access-token": user.token,
         "Access-Control-Allow-Origin": BASE_URL,
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
+        "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS",
       },
     });
     return res.json();
   } catch (err) {
-    console.log(err);
+    console.log("delete post Error from api/posts line 130", err);
   }
 };
 
@@ -132,11 +135,14 @@ const getComments = async (params) => {
   try {
     const { id } = params;
     const res = await fetch(BASE_URL + "api/comments/post/" + id, {
+      method: "GET",
       headers: {
         "Access-Control-Allow-Origin": BASE_URL,
       },
     });
-    return res.json();
+    const comments = res.json();
+    // console.log(comments);
+    return comments;
   } catch (err) {
     console.log(err);
   }

@@ -14,14 +14,26 @@ const Post = require("./models/Post");
 
 dotenv.config();
 
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000",
+//       "http://localhost:4000",
+//       "https://pigeonx.netlify.app",
+//       "https://pigeon-backend-dbid.onrender.com",
+//     ],
+//     methods: ["GET", "POST"],
+//   })
+// );
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "http://localhost:4000",
       "https://pigeonx.netlify.app",
       "https://pigeon-backend-dbid.onrender.com",
     ],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
 
@@ -30,10 +42,11 @@ const io = require("socket.io")(httpServer, {
   cors: {
     origin: [
       "http://localhost:3000",
+      "http://localhost:4000",
       "https://pigeonx.netlify.app",
       "https://pigeon-backend-dbid.onrender.com",
     ],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
 
