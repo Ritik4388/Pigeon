@@ -25,7 +25,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
 
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
