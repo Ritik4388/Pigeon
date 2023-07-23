@@ -18,7 +18,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:4000",
-    "https://pigeonx.netlify.app",
+    "https://pigeonx.netlify.app/",
   ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 };
