@@ -31,7 +31,7 @@ app.use(
       "http://localhost:3000",
       "http://localhost:4000",
       "https://pigeonx.netlify.app",
-      "https://pigeon-henna.vercel.app",
+      "https://pigeon-henna.vercel.app/",
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
@@ -44,7 +44,7 @@ const io = require("socket.io")(httpServer, {
       "http://localhost:3000",
       "http://localhost:4000",
       "https://pigeonx.netlify.app",
-      "https://pigeon-henna.vercel.app",
+      "https://pigeon-henna.vercel.app/",
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
