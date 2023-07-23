@@ -14,40 +14,22 @@ const Post = require("./models/Post");
 
 dotenv.config();
 
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000",
-//       "http://localhost:4000",
-//       "https://pigeonx.netlify.app",
-//       "https://pigeon-henna.vercel.app/",
-//     ],
-//     methods: ["GET", "POST"],
-//   })
-// );
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:4000",
-      "https://pigeonx.netlify.app",
-      "https://pigeon-henna.vercel.app/",
-    ],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  })
-);
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:4000",
+    "https://pigeonx.netlify.app",
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
 
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
-  cors: {
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:4000",
-      "https://pigeonx.netlify.app",
-      "https://pigeon-henna.vercel.app/",
-    ],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  },
+  cors: corsOptions,
 });
 
 io.use(authSocket);
