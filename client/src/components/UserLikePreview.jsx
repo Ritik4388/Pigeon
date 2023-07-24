@@ -32,9 +32,9 @@ const UserLikePreview = ({ postId, userLikePreview }) => {
               {userLikes &&
                 userLikes.map((userLike) => (
                   <Avatar
-                  src={"https://api.dicebear.com/6.x/adventurer/svg?seed=" + userLike.username}
+                  src={"https://api.dicebear.com/6.x/adventurer/svg?seed=" + userLike?.username}
                     sx={{ backgroundColor: "lightgray", width: 30, height: 30 }}
-                    key={userLike._id}
+                    key={userLike?._id}
                   />
                 ))}
             </AvatarGroup>
