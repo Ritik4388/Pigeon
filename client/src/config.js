@@ -1,4 +1,4 @@
-let BASE_URL = "https://pigeon-production.up.railway.app/";
+let BASE_URL = "https://pigeon-backend-dbid.onrender.com/";
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   BASE_URL = "http://localhost:4000/";
 }
