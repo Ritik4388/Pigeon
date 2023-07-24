@@ -19,7 +19,6 @@ const corsOptions = {
     "http://localhost:3000",
     "http://localhost:4000",
     "https://pigeonx.netlify.app",
-    "https://pigeon-production.up.railway.app",
   ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 };
