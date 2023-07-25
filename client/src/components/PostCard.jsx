@@ -26,7 +26,7 @@ const PostCard = (props) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const user = isLoggedIn();
-  const isAuthor = user && user.username === postData.poster.username;
+  const isAuthor = user && user.username === postData.poster?.username;
 
   const theme = useTheme();
   const iconColor = theme.palette.primary.main;
@@ -107,7 +107,7 @@ const PostCard = (props) => {
           <PostContentBox clickable={preview} post={post} editing={editing}>
             <HorizontalStack justifyContent="space-between">
               <ContentDetails
-                username={post.poster.username}
+                username={post.poster && post.poster.username}
                 createdAt={post.createdAt}
                 edited={post.edited}
                 preview={preview === "secondary"}

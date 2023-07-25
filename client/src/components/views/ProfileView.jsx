@@ -7,7 +7,6 @@ import CommentBrowser from "../CommentBrowser";
 
 import ErrorAlert from "../ErrorAlert";
 import FindUsers from "../FindUsers";
-import Footer from "../Footer";
 import Loading from "../Loading";
 import MobileProfile from "../MobileProfile";
 import Navbar from "../Navbar";

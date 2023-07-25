@@ -1,9 +1,7 @@
 import { useTheme } from "@emotion/react";
 import {
-  Avatar,
   Button,
   Card,
-  Divider,
   Stack,
   Typography,
 } from "@mui/material";
@@ -12,11 +10,9 @@ import React, { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
-import Footer from "./Footer";
 import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
-import PrivateRoute from "./PrivateRoute";
 
 const Profile = (props) => {
   const [user, setUser] = useState(null);

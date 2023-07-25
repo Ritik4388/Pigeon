@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { useEffect, useState } from "react";
 
 const theme = createTheme({
   components: {
@@ -8,7 +7,7 @@ const theme = createTheme({
         variant: "outlined",
       },
       styleOverrides: {
-        root: ({ ownerState, theme }) => ({
+        root: ({ theme }) => ({
           ...{
             padding: theme.spacing(2),
             borderWidth: "1.5px",

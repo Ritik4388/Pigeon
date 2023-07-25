@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup, Button, Typography } from "@mui/material";
+import { Avatar, AvatarGroup, Button } from "@mui/material";
 import React, { useState } from "react";
 import HorizontalStack from "./util/HorizontalStack";
 import { AiFillLike } from "react-icons/ai";
@@ -32,9 +32,12 @@ const UserLikePreview = ({ postId, userLikePreview }) => {
               {userLikes &&
                 userLikes.map((userLike) => (
                   <Avatar
-                  src={"https://api.dicebear.com/6.x/adventurer/svg?seed=" + userLike?.username}
-                    sx={{ backgroundColor: "lightgray", width: 30, height: 30 }}
                     key={userLike?._id}
+                    src={
+                      "https://api.dicebear.com/6.x/adventurer/svg?seed=" +
+                      userLike?.username
+                    }
+                    sx={{ backgroundColor: "lightgray", width: 30, height: 30 }}
                   />
                 ))}
             </AvatarGroup>
